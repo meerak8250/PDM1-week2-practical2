@@ -31,6 +31,11 @@ function testLoad() {
         else {
             TestResults.addPass("The minimum value that <code>random()</code> can return has been set correctly.");
         }
+        if (canvasStatus.randomCalls[0].maxVal === 10) {
+            TestResults.addPass("The maximum value of <code>random()</code> has been set correctly.");
+        } else {
+            TestResults.addFail(`The maximum value of <code>random()</code> has been set to ${canvasStatus.randomCalls[0].maxVal} when it should have been set to 10.`);
+        }
     } else {
         TestResults.addFail(`Expected <code>random()</code> to be called exactly once, in <code>setup()</code>. In the first frame of the sketch, <code>random()</code> is called ${canvasStatus.randomCalls.length} times`);
         TestResults.addWarning("No further tests will run until <code>random()</code> is called as expected.");
